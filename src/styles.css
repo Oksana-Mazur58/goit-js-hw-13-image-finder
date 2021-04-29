@@ -28,6 +28,12 @@ body {
 
 
 }
+.button.is-hidden{
+  display: none;
+}
+.button > .spiner.is-hidden{
+  display: none;
+}
 .form-control{
     padding-left: 20px;
     padding-top: 10px;
