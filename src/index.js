@@ -7,13 +7,15 @@ import LoadMoreBtn from './js/load-more-btn'
 const refs = {
     searchForm: document.querySelector('.seaech_form'),
     imageList: document.querySelector('.images-list'),
-    readMoreBtn: document.querySelector('[data-action="load-more"]'),
-    // resetBtn: document.querySelector('[data-action="reset"]')
+    // readMoreBtn: document.querySelector('[data-action="load-more"]'),
+    
 }
-// const loadMoreBtn = new LoadMoreBtn({
-//     selector: '.load-more-btn',
-//     hidden: true,
-// })
+const loadMoreBtn = new LoadMoreBtn({
+    selector: '.load-more-btn',
+    hidden: true,
+   
+})
+console.log(loadMoreBtn);
 
 
 
@@ -22,7 +24,7 @@ const newsApiServise = new NewsApiServise();
 
 
 refs.searchForm.addEventListener('submit', onSearch)
-refs.readMoreBtn.addEventListener('click', onReadMore)
+loadMoreBtn.refs.loadMoreButton.addEventListener('click', onFetchImage())
 // refs.resetBtn.addEventListener('click', onReset)
 
 
@@ -37,23 +39,23 @@ function onSearch(e) {
         // loadMoreBtn.hide();
     } else {
         clearImageContainer();
-        // loadMoreBtn.show();
+        loadMoreBtn.show();
         newsApiServise.resetPage()
-        newsApiServise.fetchImage().then(({ hits }) => {
-            imagesMarkup(hits);
-        })
-        // onReadMore()
+        onFetchImage();
+        
     }
 }
 
-function onReadMore() {
-    // loadMoreBtn.disable();
+
+function onFetchImage() {
+    loadMoreBtn.disable()
     newsApiServise.fetchImage().then(({ hits }) => {
         imagesMarkup(hits);
-
+        loadMoreBtn.enable()
         windowsScrolling()
-    
     })
+    
+    
 }
 
 

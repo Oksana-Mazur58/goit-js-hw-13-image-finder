@@ -28,10 +28,10 @@ body {
 
 
 }
-.button.is-hidden{
+.btn.is-hidden{
   display: none;
 }
-.button > .spiner.is-hidden{
+.btn > .spiner.is-hidden{
   display: none;
 }
 .form-control{
